@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cais da Estação — Armazéns · Estrada da Estação, Loulé</title>
+<meta name="description" content="Quatro armazéns e portaria na Estrada da Estação, Loulé. Modelo 3D, renders, peças desenhadas e ficha do projeto.">
+<meta property="og:title" content="Cais da Estação — Armazéns · Estrada da Estação, Loulé">
+<meta property="og:image" content="imagens/thumbs/armazens_loule_panorama_rua_com_alfarrobeira_1400.jpg">
+<meta name="theme-color" content="#4E4C46">
+<link rel="preload" as="image" href="imagens/thumbs/armazens_loule_panorama_rua_com_alfarrobeira_1400.jpg" imagesrcset="imagens/thumbs/armazens_loule_panorama_rua_com_alfarrobeira_1400.jpg 1400w, imagens/armazens_loule_panorama_rua_com_alfarrobeira.jpg 2560w" imagesizes="100vw">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+} }
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#topo" aria-label="Início">
+    <span class="logo-slot"><img src="imagens/make_logo_escuro.png" alt="MAKE — Obras, Reabilitação, Remodelações" width="500" height="70"></span>
+    <span class="brand-text">Cais da Estação</span>
+  </a>
+  <nav class="nav" aria-label="Secções">
+    <a href="#modelo"><i>02</i> Modelo 3D</a>
+    <a href="#renders"><i>03</i> Renders</a>
+    <a href="#pecas"><i>04</i> Peças desenhadas</a>
+    <a href="#ficha"><i>05</i> Ficha</a>
+    <a href="#contacto"><i>06</i> Contacto</a>
+  </nav>
+</header>
+
+<!-- 01 · TOPO -->
+<section id="topo" class="hero">
+  <figure class="hero-img">
+    <img id="heroImg"
+         src="imagens/thumbs/armazens_loule_panorama_rua_com_alfarrobeira_1400.jpg"
+         srcset="imagens/thumbs/armazens_loule_panorama_rua_com_alfarrobeira_1400.jpg 1400w, imagens/armazens_loule_panorama_rua_com_alfarrobeira.jpg 2560w"
+         sizes="100vw" width="2560" height="1100"
+         alt="Vista da rua sobre os quatro armazéns, estacionamento e alfarrobeira em primeiro plano">
+    <div class="hero-toggle" role="group" aria-label="Variante do panorama">
+      <button type="button" class="on" data-pano="com">com alfarrobeira</button>
+      <button type="button" data-pano="sem">sem alfarrobeira</button>
+    </div>
+  </figure>
+
+  <div class="hero-sheet">
+    <div class="hero-title">
+      <p class="eyebrow">Armazéns · Estrada da Estação, Loulé</p>
+      <h1>Cais da Estação</h1>
+      <p class="lead">Quatro armazéns e portaria junto à linha do Algarve, na Estrada da Estação, em Loulé. Volumes de um piso em chapa ondulada cinza, com frentes de painel Viroc e ripado de madeira voltadas para o estacionamento.</p>
+      <a class="btn" href="#modelo">Explorar o modelo 3D <span aria-hidden="true">→</span></a>
+      <aside class="name-note">
+        <span class="mono">Porquê «Cais da Estação»?</span>
+        <p>O cais era a plataforma de cargas das estações ferroviárias, onde se carregava e descarregava mercadoria para os armazéns. A poucos passos da estação de Loulé, estes armazéns retomam essa ideia.</p>
+      </aside>
+    </div>
+
+    <table class="stamp" aria-label="Carimbo do projeto">
+      <tr><th colspan="2">projeto</th><th>folha</th></tr>
+      <tr><td colspan="2" class="big">Cais da Estação · Armazéns</td><td rowspan="3" class="sheetno">00</td></tr>
+      <tr><th>local</th><th>data</th></tr>
+      <tr><td>Cerro de Cabeça de Câmara,<br>S. Sebastião, Loulé</td><td>jul. 2026</td></tr>
+      <tr><th>programa</th><th>a. constr.</th><th>pisos</th></tr>
+      <tr><td>4 armazéns + portaria</td><td>812,70 m²</td><td>1</td></tr>
+    </table>
+  </div>
+</section>
+
+<main>
+
+<!-- 02 · MODELO 3D -->
+<section id="modelo" class="sheet">
+  <header class="sheet-head">
+    <span class="num">02</span>
+    <h2>Modelo 3D</h2>
+    <p>Rode, aproxime e desloque. No telemóvel: um dedo roda, dois dedos aproximam e deslocam.</p>
+  </header>
+
+  <div class="viewer" id="viewer">
+    <canvas id="viewerCanvas" aria-label="Visualizador 3D dos armazéns"></canvas>
+
+    <div class="viewer-poster" id="viewerPoster">
+      <img src="imagens/thumbs/armazens_loule_v2_aerea.jpg" alt="" loading="lazy">
+      <button type="button" class="btn btn-light" id="viewerStart">Carregar modelo 3D <small>(8 MB)</small></button>
+    </div>
+
+    <div class="viewer-loading" id="viewerLoading" hidden>
+      <span>A carregar modelo</span>
+      <div class="bar"><i id="viewerBar"></i></div>
+      <span id="viewerPct" class="mono">0 %</span>
+    </div>
+
+    <div class="viewer-ui" id="viewerUi" hidden>
+      <div class="views" role="group" aria-label="Vistas">
+        <button type="button" data-view="aerea" class="on">Aérea</button>
+        <button type="button" data-view="rua">Rua</button>
+        <button type="button" data-view="entrada">Entrada</button>
+        <button type="button" data-view="topo">Planta</button>
+      </div>
+      <div class="tools">
+        <button type="button" id="btnRotate" aria-pressed="false" title="Rotação automática">⟳ Rodar</button>
+        <button type="button" id="btnFull" title="Ecrã inteiro">⤢ Ecrã inteiro</button>
+      </div>
+    </div>
+
+    <div class="viewer-north" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 5 L25 24 L20 21 L15 24 Z" fill="currentColor"/><text x="20" y="36" text-anchor="middle" font-size="7" fill="currentColor">N</text></svg></div>
+    <p class="viewer-note mono">Sol de sudeste, manhã · unidades em metros</p>
+  </div>
+</section>
+
+<!-- 03 · RENDERS -->
+<section id="renders" class="sheet">
+  <header class="sheet-head">
+    <span class="num">03</span>
+    <h2>Renders</h2>
+    <p>Visualizações do conjunto. Toque numa imagem para ampliar.</p>
+  </header>
+
+  <div class="gallery" id="gallery">
+    <figure class="g-item wide" data-full="imagens/armazens_loule_v2_aerea.jpg">
+      <img src="imagens/thumbs/armazens_loule_v2_aerea.jpg" alt="Vista aérea do conjunto" loading="lazy" width="960" height="540">
+      <figcaption><b>R.01</b> Vista aérea</figcaption>
+    </figure>
+    <figure class="g-item" data-full="imagens/armazens_loule_v2_rua.jpg">
+      <img src="imagens/thumbs/armazens_loule_v2_rua.jpg" alt="Vista a partir da rua" loading="lazy" width="960" height="540">
+      <figcaption><b>R.02</b> Vista da rua</figcaption>
+    </figure>
+    <figure class="g-item" data-full="imagens/armazens_loule_v2_entrada.jpg">
+      <img src="imagens/thumbs/armazens_loule_v2_entrada.jpg" alt="Entrada do conjunto" loading="lazy" width="960" height="540">
+      <figcaption><b>R.03</b> Entrada</figcaption>
+    </figure>
+    <figure class="g-item" data-full="imagens/armazens_loule_v2_detalhe.jpg">
+      <img src="imagens/thumbs/armazens_loule_v2_detalhe.jpg" alt="Detalhe da fachada" loading="lazy" width="960" height="540">
+      <figcaption><b>R.04</b> Detalhe da fachada</figcaption>
+    </figure>
+    <figure class="g-item" data-full="imagens/armazens_loule_v2_poente.jpg">
+      <img src="imagens/thumbs/armazens_loule_v2_poente.jpg" alt="Vista ao poente" loading="lazy" width="960" height="540">
+      <figcaption><b>R.05</b> Ao poente</figcaption>
+    </figure>
+    <figure class="g-item wide pano" data-full="imagens/armazens_loule_panorama_rua_sem_alfarrobeira.jpg">
+      <img src="imagens/thumbs/armazens_loule_panorama_rua_sem_alfarrobeira.jpg" alt="Panorama da rua sem a alfarrobeira" loading="lazy" width="960" height="413">
+      <figcaption><b>R.06</b> Panorama da rua, sem alfarrobeira</figcaption>
+    </figure>
+  </div>
+  <p class="disclaimer">As imagens são uma visualização, não um documento do projeto: muro baixo junto à rua, entradas, moradia vizinha e viaturas são aproximações.</p>
+</section>
+
+<!-- 04 · PEÇAS DESENHADAS -->
+<section id="pecas" class="sheet">
+  <header class="sheet-head">
+    <span class="num">04</span>
+    <h2>Peças desenhadas</h2>
+    <p>Projeto de arquitetura submetido à Câmara Municipal de Loulé. Abra uma folha para ampliar: roda do rato ou dois dedos para zoom, arrastar para deslocar.</p>
+  </header>
+
+  <div class="drawings" id="drawings">
+    <article class="dwg" data-full="plantas/folha-02.jpg" data-title="Planta de implantação" data-no="01" data-scale="1:200">
+      <div class="dwg-img"><img src="plantas/thumbs/folha-02.jpg" alt="Planta de implantação" loading="lazy" width="900" height="637"></div>
+      <table class="stamp mini"><tr><th>peça</th><th>escala</th><th>des.</th></tr><tr><td>Planta de implantação</td><td>1:200</td><td class="sheetno">01</td></tr></table>
+    </article>
+    <article class="dwg" data-full="plantas/folha-05.jpg" data-title="Planta do piso 1 e quadro de áreas" data-no="04" data-scale="1:100">
+      <div class="dwg-img"><img src="plantas/thumbs/folha-05.jpg" alt="Planta do piso 1 e quadro de áreas" loading="lazy" width="900" height="637"></div>
+      <table class="stamp mini"><tr><th>peça</th><th>escala</th><th>des.</th></tr><tr><td>Planta do piso 1 · quadro de áreas</td><td>1:100</td><td class="sheetno">04</td></tr></table>
+    </article>
+    <article class="dwg" data-full="plantas/folha-06.jpg" data-title="Planta de cobertura" data-no="05" data-scale="1:100">
+      <div class="dwg-img"><img src="plantas/thumbs/folha-06.jpg" alt="Planta de cobertura" loading="lazy" width="900" height="637"></div>
+      <table class="stamp mini"><tr><th>peça</th><th>escala</th><th>des.</th></tr><tr><td>Planta de cobertura</td><td>1:100</td><td class="sheetno">05</td></tr></table>
+    </article>
+    <article class="dwg" data-full="plantas/folha-07.jpg" data-title="Cortes 01 e 02" data-no="06" data-scale="1:100">
+      <div class="dwg-img"><img src="plantas/thumbs/folha-07.jpg" alt="Cortes 01 e 02" loading="lazy" width="900" height="637"></div>
+      <table class="stamp mini"><tr><th>peça</th><th>escala</th><th>des.</th></tr><tr><td>Cortes 01 e 02</td><td>1:100</td><td class="sheetno">06</td></tr></table>
+    </article>
+    <article class="dwg" data-full="plantas/folha-08.jpg" data-title="Alçados sul, norte, nascente e poente · materiais" data-no="07" data-scale="1:100">
+      <div class="dwg-img"><img src="plantas/thumbs/folha-08.jpg" alt="Alçados e legenda de materiais" loading="lazy" width="900" height="637"></div>
+      <table class="stamp mini"><tr><th>peça</th><th>escala</th><th>des.</th></tr><tr><td>Alçados · legenda de materiais</td><td>1:100</td><td class="sheetno">07</td></tr></table>
+    </article>
+  </div>
+</section>
+
+<!-- 05 · FICHA -->
+<section id="ficha" class="sheet">
+  <header class="sheet-head">
+    <span class="num">05</span>
+    <h2>Ficha do projeto</h2>
+    <p>Valores do quadro sinóptico e do quadro de áreas das peças desenhadas.</p>
+  </header>
+
+  <div class="ficha">
+    <dl class="facts">
+      <div><dt>Local</dt><dd>Estrada da Estação · Cerro de Cabeça de Câmara, S. Sebastião, Loulé</dd></div>
+      <div><dt>Uso</dt><dd>Indústria, logística e/ou armazéns</dd></div>
+      <div><dt>Programa</dt><dd>4 armazéns (A–D) + portaria</dd></div>
+      <div><dt>Área do prédio</dt><dd class="mono">7 709,00 m²</dd></div>
+      <div><dt>Área de construção</dt><dd class="mono">812,70 m²</dd></div>
+      <div><dt>Área útil total</dt><dd class="mono">746,75 m²</dd></div>
+      <div><dt>Cércea · altura da fachada</dt><dd class="mono">7,00 m</dd></div>
+      <div><dt>N.º de pisos</dt><dd class="mono">1 (acima da cota de soleira)</dd></div>
+      <div><dt>Estacionamento</dt><dd class="mono">18 lugares <small>(11 + 2 mob. condicionada + 2 pesados + 3 públicos)</small></dd></div>
+    </dl>
+
+    <div class="areas">
+      <table class="tbl">
+        <caption>Quadro de áreas</caption>
+        <thead><tr><th>Unidade</th><th>A. bruta</th><th>A. útil</th><th>Logradouro</th></tr></thead>
+        <tbody>
+          <tr><td>Armazém A</td><td>111,87 m²</td><td>98,47 m²</td><td>—</td></tr>
+          <tr><td>Armazém B</td><td>216,56 m²</td><td>201,71 m²</td><td>94,61 m²</td></tr>
+          <tr><td>Armazém C</td><td>237,20 m²</td><td>220,66 m²</td><td>76,36 m²</td></tr>
+          <tr><td>Armazém D</td><td>230,58 m²</td><td>213,89 m²</td><td>114,49 m²</td></tr>
+          <tr><td>Portaria</td><td>16,49 m²</td><td>12,02 m²</td><td>—</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total</td><td>812,70 m²</td><td>746,75 m²</td><td></td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="materials">
+      <h3>Materiais</h3>
+      <ul class="swatches">
+        <li><span class="sw sw-7022"></span><b>Chapa ondulada RAL 7022</b><small>Chapa 76/18, 0,4 mm · revestimento das fachadas</small></li>
+        <li><span class="sw sw-viroc"></span><b>Painéis Viroc</b><small>Placas cinza bruto com verniz · base das frentes</small></li>
+        <li><span class="sw sw-wood"></span><b>Ripado de madeira</b><small>Ripado 16 mm com verniz incolor mate · frentes de entrada</small></li>
+        <li><span class="sw sw-alu"></span><b>Alumínio anodizado</b><small>Caixilharia e portas de entrada</small></li>
+        <li><span class="sw sw-7038"></span><b>Muros RAL 7038</b><small>Pintura dos muros de vedação</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 06 · CONTACTO -->
+<footer id="contacto" class="footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <span class="num">06</span>
+      <h2>Mais informações?</h2>
+      <p class="contact-lead">Fale connosco!</p>
+      <p class="contact">
+        <a href="mailto:info@make.pt">info@make.pt</a><br>
+        <a href="tel:+351213635215">T. +351 213 635 215</a>
+      </p>
+    </div>
+    <div class="footer-office">
+      <span class="mono label">Escritório Algarve</span>
+      <address>
+        <a href="https://maps.app.goo.gl/GTbajmEPhdsp9emZA" target="_blank" rel="noopener">Centro Empresarial e Industrial de Loulé,<br>Lote 18 – Fração F – Campina de Baixo<br>8100-285 Loulé</a>
+      </address>
+      <img class="footer-logo" src="imagens/make_logo.png" alt="MAKE — Obras, Reabilitação, Remodelações" width="500" height="70" loading="lazy">
+    </div>
+  </div>
+  <div class="footer-stamp">
+    <table class="stamp">
+      <tr><th>projeto</th><th>local</th><th>data</th></tr>
+      <tr><td>Cais da Estação</td><td>Estrada da Estação, Loulé</td><td>jul. 2026</td></tr>
+    </table>
+  </div>
+  <p class="fineprint">Imagens e modelo 3D com carácter ilustrativo. Visualizador: three.js (MIT).</p>
+</footer>
+
+<!-- Lightbox (renders) -->
+<div class="lb" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+  <button type="button" class="lb-close" aria-label="Fechar">×</button>
+  <button type="button" class="lb-prev" aria-label="Anterior">‹</button>
+  <img alt="">
+  <button type="button" class="lb-next" aria-label="Seguinte">›</button>
+  <p class="lb-cap mono"></p>
+</div>
+
+<!-- Visualizador de plantas -->
+<div class="pz" id="planViewer" hidden role="dialog" aria-modal="true" aria-label="Peça desenhada ampliada">
+  <div class="pz-bar">
+    <span class="pz-title mono"></span>
+    <div class="pz-tools">
+      <button type="button" data-z="out" aria-label="Reduzir">−</button>
+      <button type="button" data-z="fit" aria-label="Ajustar">Ajustar</button>
+      <button type="button" data-z="in" aria-label="Ampliar">+</button>
+      <a class="pz-dl" download aria-label="Descarregar">↓ JPG</a>
+      <button type="button" class="pz-close" aria-label="Fechar">×</button>
+    </div>
+  </div>
+  <div class="pz-stage"><img alt="" draggable="false"></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
